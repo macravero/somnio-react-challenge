@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### Somnio challenge - Martin Cravero
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) _and therefore I will keep the setup steps as Next provides them._ You should be able to run the application following the commands below:
 
 ## Getting Started
 
@@ -14,23 +16,26 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the home page.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[http://localhost:3000/cart](http://localhost:3000/cart) should take you to the shopping cart page.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Stack:
+This project was developed as a quick MVC over the weekend for a coding challenge so no extra complexity was added to the stack. Only baseline Nextjs routing together with styled-componets for quick design and scoped styling.
 
-## Learn More
+I decided to use typescript as it helps me with debugging and maintaining some code quality.
 
-To learn more about Next.js, take a look at the following resources:
+The error handling implemented focuses on providing the user with a feedback message on fetch errors.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure and design choices
+The project uses react context to create both a `CartContext` and a `SearchContext` that allowed me to keep homogenous state between the pages and components. 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+You will also find a `cart` folder with its homepage and a `components` folder with each componentized piece of the app. There is room to improve the reusability of styled-component classes and also one could argue scoping page-specific components within their own pages. For example, components that are only used by the `Cart` page could reside within a `cart` folder, rather than in the global components folder. This would lead to better organization, make it easier to manage components, and improve clarity as the project scales.
 
-## Deploy on Vercel
+Colors, fonts and sizes were simplified and assumed generic as I had no access to the specific design details. This particularly shows on the color pattern choices, where I used the closest available colors from the native CSS named color list.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+I implemented native HTML icons instead of importing an icon library, which would be a wise design choice for scalability. 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+I used a couple of React lifecycle hooks to handle certain operations, which required setting components to be client-side. This allowed me to implement these functionalities quickly. However, this approach has its trade-offs, as Next.js is optimized for server-side rendering.
+
+With more time, I would refactor parts of the project to take better advantage of Next.js’s SSR capabilities. This would involve moving certain data-fetching logic to server-side methods like getServerSideProps or getStaticProps, reducing the need for client-side hooks and improving the overall efficiency of the application.
