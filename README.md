@@ -39,3 +39,10 @@ I implemented native HTML icons instead of importing an icon library, which woul
 I used a couple of React lifecycle hooks to handle certain operations, which required setting components to be client-side. This allowed me to implement these functionalities quickly. However, this approach has its trade-offs, as Next.js is optimized for server-side rendering.
 
 With more time, I would refactor parts of the project to take better advantage of Next.js’s SSR capabilities. This would involve moving certain data-fetching logic to server-side methods like getServerSideProps or getStaticProps, reducing the need for client-side hooks and improving the overall efficiency of the application.
+
+## Potential UI improvements:
+
+- There is no real way to _remove_ products from the shopping cart, nor a clear indication that you have successfully added a product other than the small number increasing in the badge. Added to this, you can add multiple copies of the same product with no UI feedback other than manually checking the cart.
+- Right now, all data is stored in the user's session. This could be vastly improved, even within the browser, with the use of localstorage.
+- I assume this was out of scope due to time constraints but there is no real next step after adding product to cart.
+- When the product list ends with only 1 or 2 products instead of 3, the layout appears unbalanced.
